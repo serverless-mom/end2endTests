@@ -29,9 +29,17 @@ jobs:
 
       - name: Install Checkly CLI
         run: npm install -g checkly
-
+    
       - name: Run Checkly Checks
         run: checkly test --config checkly.config.ts
         env:
           CHECKLY_API_KEY: ${{ secrets.CHECKLY_API_KEY }}
           CHECKLY_ACCOUNT_ID: ${{ secrets.CHECKLY_ACCOUNT_ID }}
+
+            - name: Create summary # export the markdown report to the job summary.
+        id: create-summary
+        run: cat checkly-github-report.md > $GITHUB_STEP_SUMMARY
+      - name: Deploy checks # if the test run was successful and we are on Production, deploy the checks
+        id: deploy-checks
+        if: steps.run-checks.outcome == 'success' && github.event.deployment_status.environment == 'Production'
+        run: npx checkly deploy --force
