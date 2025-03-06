@@ -1,0 +1,7 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://www.checklyhq.com/');
+  await page.getByRole('button', { name: 'Developers' }).first().click();
+  await page.getByRole('link', { name: 'Documentation Technical docs' }).click();
+});
