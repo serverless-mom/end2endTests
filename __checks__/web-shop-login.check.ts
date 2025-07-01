@@ -1,8 +1,8 @@
 import { BrowserCheck, Frequency } from 'checkly/constructs'
 import * as path from 'path'
 
-new BrowserCheck('browser-check-1', {
-  name: 'Browser check #1',
+new BrowserCheck('web-shop-login', {
+  name: 'Web Shop Login',
   frequency: Frequency.EVERY_10M,
   locations: ['us-east-1', 'eu-west-1', 'ap-southeast-1'],
   code: {
