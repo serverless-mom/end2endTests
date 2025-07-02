@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.only('test', async ({ page }) => {
+test('test', async ({ page }) => {
   await page.goto('https://danube-webshop.herokuapp.com/');
   await page.getByText('Business').click();
   await page.locator('a').filter({ hasText: 'Crime & Thrillers' }).click();
