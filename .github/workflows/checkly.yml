@@ -23,10 +23,8 @@ jobs:
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
-      - name: Install Checkly CLI
-        run: npm install -g checkly
       - name: Run Checkly Checks
-        run: checkly test --config checkly.config.ts
+        run: npx checkly test --config checkly.config.ts
         env:
           CHECKLY_API_KEY: ${{ secrets.CHECKLY_API_KEY }}
           CHECKLY_ACCOUNT_ID: ${{ secrets.CHECKLY_ACCOUNT_ID }}
