@@ -1,10 +1,10 @@
 import { AlertEscalationBuilder, BrowserCheck, RetryStrategyBuilder } from 'checkly/constructs'
-import { prodShopGroup } from '../../__checks__/check-group/prod-eshop/prod-eshop.check'
+import { prodShopGroup } from '../../check-group/prod-eshop/prod-eshop.check'
 
-new BrowserCheck('one-page-for-two-tests-s8oAhPqb', {
-  name: 'One Page for Two Tests',
+new BrowserCheck('checkout-v3', {
+  name: 'Checkout',
   code: {
-    entrypoint: './one-page-for-two-tests.spec.ts',
+    entrypoint: './checkout.spec.ts',
   },
   activated: true,
   muted: false,
