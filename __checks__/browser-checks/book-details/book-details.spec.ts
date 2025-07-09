@@ -13,8 +13,7 @@ test('Book has correct details', async ({ page }) => {
     }
     await route.fulfill({ json });
   });
-
-  await page.goto('https://danube-webshop.herokuapp.com/books/23');
+  await page.goto(process.env.baseUrl + 'books/23');
   //Removed for brevity: checks of the book's title, genre, etc.
   await expect(page).toHaveScreenshot()
   await expect(page.locator('#app-content')).toContainText("Left in stock:");
